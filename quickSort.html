@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quick Sort</title>
+  </head>
+  <body>
+    <h1>Quick Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>
+        Chọn một phần tử làm pivot (thường là phần tử cuối cùng của mảng).
+      </li>
+      <li>
+        Phân hoạch mảng sao cho tất cả các phần tử nhỏ hơn pivot nằm ở bên trái
+        pivot và tất cả các phần tử lớn hơn pivot nằm ở bên phải pivot.
+      </li>
+      <li>
+        Áp dụng thuật toán quick sort cho hai phần con bên trái và bên phải của
+        pivot.
+      </li>
+      <li>
+        Lặp lại các bước trên cho đến khi tất cả các phần tử trong mảng được sắp
+        xếp.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="quickSort">Quick Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Quick Sort</button>
+
+    <script>
+      // quick sort
+      const quickSort = () => {
+        const arr = getArray();
+        return quickSortHelper(arr, 0, arr.length - 1);
+      };
+
+      const quickSortHelper = (arr, left, right) => {
+        if (left < right) {
+          const pivotIndex = partition(arr, left, right);
+          quickSortHelper(arr, left, pivotIndex - 1);
+          quickSortHelper(arr, pivotIndex + 1, right);
+        }
+        return arr;
+      };
+
+      const partition = (arr, left, right) => {
+        const pivot = arr[right];
+        let i = left - 1;
+        for (let j = left; j < right; j++) {
+          if (Number(arr[j]) <= Number(pivot)) {
+            i++;
+            swap(arr, i, j);
+          }
+        }
+        swap(arr, i + 1, right);
+        return i + 1;
+      };
+
+      const swap = (arr, i, j) => {
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      };
+
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateArraySortElementValue = () => {
+        const elem = document.getElementById("quickSort");
+        elem.innerText = `Quick Sort: [${quickSort().join(", ")}]`;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
+      };
+    </script>
+  </body>
+</html>
