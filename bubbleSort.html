@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubble Sort</title>
+  </head>
+  <body>
+    <h1>Buble Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>Sử dụng 2 vòng lặp để lặp qua mảng</li>
+      <li>
+        Vòng lặp bên trong sử dụng để sắp xếp cho giá trị lớn nhất nằm cuối
+        cùng. Bằng cách lấy 2 giá trị liền kề và so sánh. giá trị nào lớn hơn
+        thì đưa chúng về sau. tiếp tục với cặp giá trị tiếp theo với bước nhảy
+        bằng 1
+      </li>
+      <li>
+        Vòng lặp bên ngoài dùng để đưa tất cả các giá trị lớn về phía sau sau
+        mỗi vòng lặp bên trong
+      </li>
+      <li>Cuỗi cùng sẽ thu được mảng được sắp xếp từ bé đến lớn</li>
+    </ol>
+    <p>Bubble Sort Improvement:</p>
+    <ul>
+      <li>
+        Giả sử mảng được sắp xếp chỉ sau lần lắp đầu tiên. vậy thì chúng không
+        cần chạy các vòng lăp tiếp theo
+      </li>
+      <li>
+        Thêm cờ "checkSwap" vào để chúng có thể kiểm tra. nếu không có swap thì
+        nó sẽ thoát chương trình
+      </li>
+    </ul>
+    <p id="array">Array: [ ]</p>
+    <p id="bubbleSort">Bubble Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Bubble Sort</button>
+
+    <script>
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateElementValue = () => {
+        console.time("Bubble sort");
+        bubbleSort();
+        console.timeEnd("Bubble sort");
+
+        console.time("Bubble sort improvement");
+        bubbleSortImprovement();
+        console.timeEnd("Bubble sort improvement");
+        
+        updateArrayElementValue();
+        updateLowestElementValue();
+      };
+
+      const bubbleSort = () => {
+        const arr = getArray();
+        for (let j = 0; j < arr.length - 1; j++) {
+          for (let i = 0; i < arr.length - 1; i++) {
+            if (Number(arr[i]) > Number(arr[i + 1])) {
+              const term = arr[i];
+              arr[i] = arr[i + 1];
+              arr[i + 1] = term;
+            }
+          }
+          console.log("lan " + (j + 1) + " arr: " + arr);
+        }
+        return arr;
+      };
+
+      const bubbleSortImprovement = () => {
+        const arr = getArray();
+        for (let j = 0; j < arr.length - 1; j++) {
+          let swapped = false;
+          for (let i = 0; i < arr.length - 1; i++) {
+            if (Number(arr[i]) > Number(arr[i + 1])) {
+              const term = arr[i];
+              arr[i] = arr[i + 1];
+              arr[i + 1] = term;
+              swapped = true;
+            }
+          }
+          if (swapped == false) {
+            break;
+          }
+          console.log("lan " + (j + 1) + " arr: " + arr);
+        }
+        return arr;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateLowestElementValue = () => {
+        const elem = document.getElementById("bubbleSort");
+        elem.innerText = `Bubble Sort: [${bubbleSort().join(", ")}]`;
+      };
+    </script>
+  </body>
+</html>

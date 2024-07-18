@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fibonacci</title>
+  </head>
+  <body>
+    <h1>Fibonacci</h1>
+    <input type="number" id="getNumber" />
+    <button onclick="screenValue()">submit</button>
+
+    <script>
+      function getValue() {
+        const inputElement = document.getElementById("getNumber");
+        return inputElement.value;
+      }
+
+      function genFibonacciWithFor1(value) {
+        const arr = [0, 1];
+        for (let i = 3; i <= value; i++) {
+          const sum = arr[i - 3] + arr[i - 2];
+          arr.push(sum);
+        }
+        return arr;
+      }
+
+      function genFibonacciWithFor2(value) {
+        let prev1 = 0;
+        let prev2 = 1;
+        const arr = [0, 1];
+        for (let i = 1; i <= value - 2; i++) {
+          const sum = prev1 + prev2;
+          arr.push(sum);
+          prev1 = prev2;
+          prev2 = sum;
+        }
+        return arr;
+      }
+
+      function genFibonacciWithRecursion1(arr, value) {
+        if (arr.length < value) {
+          arr.push(arr[arr.length - 1] + arr[arr.length - 2]);
+          genFibonacciWithRecursion1(arr, value);
+        }
+        return arr;
+      }
+
+      function genFibonacciWithRecursion2(value) {
+        if (value == 1) return [0];
+        if (value == 2) return [0, 1];
+        const arrFibonacci = genFibonacciWithRecursion2(value - 1);
+        const nextTerm =
+          arrFibonacci[arrFibonacci.length - 1] +
+          arrFibonacci[arrFibonacci.length - 2];
+        arrFibonacci.push(nextTerm);
+        return arrFibonacci;
+      }
+
+      function findnthFibolacciNumber(nth) {
+        if (nth <= 1) return 0;
+        if (nth == 2) return 1;
+        else {
+          return (
+            findnthFibolacciNumber(nth - 1) + findnthFibolacciNumber(nth - 2)
+          );
+        }
+      }
+
+      function screenValue() {
+        const value = getValue();
+
+        // console.time("genFibonacciWithFor1");
+        // console.log(genFibonacciWithFor1(Number(value)));
+        // console.timeEnd("genFibonacciWithFor1");
+
+        // console.time("genFibonacciWithFor2");
+        // console.log(genFibonacciWithFor2(Number(value)));
+        // console.timeEnd("genFibonacciWithFor2");
+
+        // console.time("genFibonacciWithRecursion1");
+        // console.log(genFibonacciWithRecursion1([0, 1], Number(value)));
+        // console.timeEnd("genFibonacciWithRecursion1");
+
+        // console.time("genFibonacciWithRecursion2");
+        console.log(genFibonacciWithRecursion2(Number(value)));
+        // console.timeEnd("genFibonacciWithRecursion2");
+
+        alert(findnthFibolacciNumber(value));
+      }
+    </script>
+  </body>
+</html>

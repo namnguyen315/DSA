@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slection Sort</title>
+  </head>
+  <body>
+    <h1>Selection Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>
+        Tìm giá trị nhỏ nhất trong mảng và hoán đổi nó với giá trị ở vị trí đầu
+        tiên của mảng.
+      </li>
+      <li>
+        Tiếp tục tìm giá trị nhỏ nhất trong phần còn lại của mảng và hoán đổi nó
+        với giá trị ở vị trí thứ hai của mảng.
+      </li>
+      <li>
+        Lặp lại quy trình này cho đến khi tất cả các phần tử trong mảng được sắp
+        xếp.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="selectionSort">Selection Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Selection Sort</button>
+
+    <script>
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
+      };
+
+      const selectionSort = () => {
+        const arr = getArray();
+        for (let i = 0; i < arr.length; i++) {
+          let minIndex = i;
+          for (let j = i + 1; j < arr.length; j++) {
+            if (Number(arr[j]) < Number(arr[minIndex])) {
+              minIndex = j;
+            }
+          }
+          if (minIndex != i) {
+            let temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+          }
+        }
+        console.log(arr);
+        return arr;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateArraySortElementValue = () => {
+        const elem = document.getElementById("selectionSort");
+        elem.innerText = `Selection Sort: [${selectionSort().join(", ")}]`;
+      };
+    </script>
+  </body>
+</html>
