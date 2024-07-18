@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Insertion Sort</title>
+  </head>
+  <body>
+    <h1>Insertion Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>Duyệt qua mảng từ phần tử thứ 2 đến phần tử cuối cùng</li>
+      <li>Lấy phần tử hiện tại và so sánh với các phần tử phía trước nó</li>
+      <li>
+        Nếu phần tử hiện tại nhỏ hơn phần tử phía trước nó, thì hoán đổi chúng
+        cho đến khi phần tử hiện tại lớn hơn hoặc bằng phần tử phía trước nó
+      </li>
+      <li>
+        Tiếp tục duyệt qua mảng cho đến khi tất cả các phần tử được sắp xếp
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="insertionSort">Insertion Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Insertion Sort</button>
+
+    <script>
+      const insertionSort = () => {
+        const arr = getArray();
+        for (let i = 1; i < arr.length; i++) {
+          let j = i - 1;
+          while (j >= 0 && Number(arr[j]) > Number(arr[i])) {
+            const temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+            i--;
+            j--;
+            console.log("step " + j + " - arr: ", arr);
+          }
+          console.log("lần " + i + " - arr: ", arr);
+        }
+        return arr;
+      };
+
+      const insertionSortImprovement = () => {
+        const arr = getArray();
+        for (let i = 1; i < arr.length; i++) {
+          const key = arr[i];
+          let j = i - 1;
+          while (j >= 0 && Number(arr[j]) > Number(key)) {
+            arr[j + 1] = arr[j];
+            j--;
+          }
+          arr[j + 1] = key;
+        }
+        return arr;
+      };
+
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateArraySortElementValue = () => {
+        const elem = document.getElementById("insertionSort");
+        elem.innerText = `Insertion Sort: [${insertionSortImprovement().join(
+          ", "
+        )}]`;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
+      };
+    </script>
+  </body>
+</html>

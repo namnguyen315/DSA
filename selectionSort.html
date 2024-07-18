@@ -30,17 +30,6 @@
     <button onclick="updateElementValue()">Selection Sort</button>
 
     <script>
-      const getArray = () => {
-        const elem = document.getElementById("getNumber");
-        const arrNum = elem.value.trim().split(" ");
-        return arrNum;
-      };
-
-      const updateElementValue = () => {
-        updateArrayElementValue();
-        updateArraySortElementValue();
-      };
-
       const selectionSort = () => {
         const arr = getArray();
         for (let i = 0; i < arr.length; i++) {
@@ -60,6 +49,12 @@
         return arr;
       };
 
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
       const updateArrayElementValue = () => {
         const elem = document.getElementById("array");
         elem.innerText = `Array: [${getArray().join(", ")}]`;
@@ -68,6 +63,11 @@
       const updateArraySortElementValue = () => {
         const elem = document.getElementById("selectionSort");
         elem.innerText = `Selection Sort: [${selectionSort().join(", ")}]`;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
       };
     </script>
   </body>
