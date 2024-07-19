@@ -1,0 +1,102 @@
+// couting sort html js implement
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counting Sort</title>
+  </head>
+  <body>
+    <h1>Counting Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>
+        Tạo một mảng đếm (count) có kích thước bằng phạm vi giá trị của mảng đầu
+        vào.
+      </li>
+      <li>
+        Duyệt qua mảng đầu vào và tăng giá trị tương ứng trong mảng đếm cho mỗi
+        phần tử.
+      </li>
+      <li>
+        Cộng dồn các giá trị trong mảng đếm để biết số lượng phần tử nhỏ hơn
+        hoặc bằng mỗi giá trị.
+      </li>
+      <li>Tạo một mảng đầu ra có cùng kích thước với mảng đầu vào.</li>
+      <li>Duyệt qua mảng đầu vào từ cuối lên đầu.</li>
+      <li>
+        Cho mỗi phần tử, giảm giá trị tương ứng trong mảng đếm xuống 1 và đặt
+        phần tử đó vào vị trí được chỉ định bởi giá trị trong mảng đếm.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="countingSort">Counting Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Counting Sort</button>
+
+    <script>
+      const countingSort = () => {
+        const arr = getArray();
+        const maxValue = Math.max(...arr);
+        const countArr = new Array(maxValue + 1).fill(0);
+        for (let i = 0; i < arr.length; i++) {
+          countArr[arr[i]] = countArr[arr[i]] + 1;
+        }
+        const newArr = [];
+
+        for (let i = 0; i < countArr.length; i++) {
+          while (countArr[i] > 0) {
+            newArr.push(i);
+            countArr[i]--;
+          }
+        }
+        return newArr;
+      };
+
+      //couting sort improvement
+      
+      const countingSortImprovement = () => {
+        const arr = getArray();
+        const maxValue = Math.max(...arr);
+        const countArr = new Array(maxValue + 1).fill(0);
+        for (let i = 0; i < arr.length; i++) {
+          countArr[arr[i]] = countArr[arr[i]] + 1;
+        }
+        for (let i = 1; i < countArr.length; i++) {
+          countArr[i] = countArr[i] + countArr[i - 1];
+        }
+        const newArr = new Array(arr.length).fill(0);
+        for (let i = arr.length - 1; i >= 0; i--) {
+          newArr[countArr[arr[i]] - 1] = arr[i];
+          countArr[arr[i]]--;
+        }
+        return newArr;
+      };
+
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateArraySortElementValue = () => {
+        const elem = document.getElementById("countingSort");
+        elem.innerText = `Counting Sort: [${countingSortImprovement().join(
+          ", "
+        )}]`;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
+      };
+    </script>
+  </body>
+</html>
