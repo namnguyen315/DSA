@@ -1,0 +1,96 @@
+// radix sort html js implement
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radix Sort</title>
+  </head>
+  <body>
+    <h1>Radix Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>
+        Tìm giá trị lớn nhất trong mảng và xác định số lượng chữ số của nó.
+      </li>
+      <li>
+        Sắp xếp mảng theo từng chữ số, bắt đầu từ chữ số hàng đơn vị, sau đó là
+        chữ số hàng chục, hàng trăm, ...
+      </li>
+      <li>
+        Để sắp xếp theo từng chữ số, sử dụng một mảng phụ có kích thước bằng 10
+        (cho 10 chữ số từ 0 đến 9).
+      </li>
+      <li>
+        Duyệt qua mảng đầu vào và đếm số lượng phần tử có chữ số hiện tại bằng
+        mỗi chữ số từ 0 đến 9.
+      </li>
+      <li>
+        Cộng dồn các giá trị trong mảng phụ để biết số lượng phần tử nhỏ hơn
+        hoặc bằng mỗi chữ số.
+      </li>
+      <li>Tạo một mảng đầu ra có cùng kích thước với mảng đầu vào.</li>
+      <li>Duyệt qua mảng đầu vào từ cuối lên đầu.</li>
+      <li>
+        Cho mỗi phần tử, giảm giá trị tương ứng trong mảng phụ xuống 1 và đặt
+        phần tử đó vào vị trí được chỉ định bởi giá trị trong mảng phụ.
+      </li>
+      <li>
+        Lặp lại các bước trên cho đến khi tất cả các chữ số của giá trị lớn nhất
+        được xử lý.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="radixSort">Radix Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Radix Sort</button>
+    <script>
+      //radix sort dont using other sorting algorithms implement
+      const radixSort = () => {
+        let arr = getArray();
+        let newArr = new Array();
+        const maxValue = Math.max(...arr);
+        const maxlength = maxValue.toString().length;
+        for (let i = 0; i < maxlength; i++) {
+          const radixArr = [[], [], [], [], [], [], [], [], [], []];
+          for (let j = 0; j < arr.length; j++) {
+            const ditgit = Math.floor((arr[j] / Math.pow(10, i)) % 10);
+            radixArr[ditgit].push(arr[j]);
+          }
+
+          for (let j = 0; j < radixArr.length; j++) {
+            if (radixArr[j].length > 0) {
+              newArr.push(...radixArr[j]);
+            }
+          }
+          arr = newArr;
+          newArr = [];
+        }
+        return arr;
+      };
+
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateArraySortElementValue = () => {
+        const elem = document.getElementById("radixSort");
+        elem.innerText = `Radix Sort: [${radixSort().join(", ")}]`;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
+      };
+    </script>
+  </body>
+</html>
