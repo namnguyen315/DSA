@@ -1,0 +1,90 @@
+// merge sort html js implement
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merge Sort</title>
+  </head>
+  <body>
+    <h1>Merge Sort</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>
+        Chia mảng thành hai phần con có kích thước bằng nhau (hoặc gần bằng
+        nhau).
+      </li>
+      <li>
+        Sắp xếp đệ quy hai phần con bằng cách sử dụng thuật toán merge sort.
+      </li>
+      <li>
+        Kết hợp hai phần con đã được sắp xếp thành một mảng đã được sắp xếp.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="mergeSort">Merge Sort: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Merge Sort</button>
+
+    <script>
+      const mergeSort = (arr) => {
+        if (arr.length <= 1) return arr;
+        const mid = Math.floor(arr.length / 2);
+        const left = arr.slice(0, mid);
+        const right = arr.slice(mid);
+
+        console.log(mergeSort(left), mergeSort(right));
+      };
+
+      const merge = (left, right) => {
+        const result = [];
+        let i = 0;
+        let j = 0;
+
+        while (i < left.length && j < right.length) {
+          if (Number(left[i]) < Number(right[j])) {
+            result.push(left[i]);
+            i++;
+          } else {
+            result.push(right[j]);
+            j++;
+          }
+        }
+
+        while (i < left.length) {
+          result.push(left[i]);
+          i++;
+        }
+        while (j < right.length) {
+          result.push(right[j]);
+          j++;
+        }
+
+        return result;
+      };
+
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateArraySortElementValue = () => {
+        const elem = document.getElementById("mergeSort");
+        elem.innerText = `Merge Sort: [${mergeSort(getArray()).join(", ")}]`;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateArraySortElementValue();
+      };
+    </script>
+  </body>
+</html>
