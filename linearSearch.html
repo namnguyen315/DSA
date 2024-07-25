@@ -1,0 +1,79 @@
+// linear search html js implement
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Search</title>
+  </head>
+  <body>
+    <h1>Linear Search</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>Duyệt qua từng phần tử trong mảng</li>
+      <li>
+        So sánh phần tử hiện tại với giá trị cần tìm. Nếu chúng bằng nhau, thì
+        trả về vị trí của phần tử hiện tại.
+      </li>
+      <li>
+        Nếu không tìm thấy giá trị cần tìm sau khi duyệt qua tất cả các phần tử
+        trong mảng, thì trả về -1.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="search">Search:</p>
+    <p id="result">Result:</p>
+
+    <input type="text" id="getNumber" />
+    <input type="text" id="searchNumber" />
+
+    <button onclick="updateElementValue()">Search</button>
+
+    <script>
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const getSearchNumber = () => {
+        const elem = document.getElementById("searchNumber");
+        return elem.value;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateSearchElementValue();
+        updateResultElementValue();
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateSearchElementValue = () => {
+        const elem = document.getElementById("search");
+        elem.innerText = `Search: ${getSearchNumber()}`;
+      };
+
+      const updateResultElementValue = () => {
+        const elem = document.getElementById("result");
+        elem.innerText = `Result: ${linearSearch()}`;
+      };
+
+      const linearSearch = () => {
+        const arr = getArray();
+        const searchNumber = getSearchNumber();
+
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i] == searchNumber);
+          if (arr[i] == searchNumber) {
+            return i;
+          }
+        }
+        return "not found";
+      };
+    </script>
+  </body>
+</html>
