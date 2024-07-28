@@ -1,0 +1,95 @@
+// binary search html js implement
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binary Search</title>
+  </head>
+  <body>
+    <h1>Binary Search</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>Sắp xếp mảng theo thứ tự tăng dần (hoặc giảm dần).</li>
+      <li>Tìm phần tử ở giữa mảng (mid).</li>
+      <li>So sánh phần tử ở giữa với giá trị cần tìm.</li>
+      <li>
+        Nếu phần tử ở giữa bằng giá trị cần tìm, thì trả về vị trí của phần tử ở
+        giữa.
+      </li>
+      <li>
+        Nếu phần tử ở giữa lớn hơn giá trị cần tìm, thì tiếp tục tìm kiếm trong
+        nửa trái của mảng.
+      </li>
+      <li>
+        Nếu phần tử ở giữa nhỏ hơn giá trị cần tìm, thì tiếp tục tìm kiếm trong
+        nửa phải của mảng.
+      </li>
+      <li>
+        Lặp lại các bước trên cho đến khi tìm thấy giá trị cần tìm hoặc mảng trở
+        thành rỗng.
+      </li>
+    </ol>
+    <p id="array">Array: [ ]</p>
+    <p id="search">Search:</p>
+    <p id="result">Result:</p>
+
+    <input type="text" id="getNumber" />
+    <input type="text" id="searchNumber" />
+
+    <button onclick="updateElementValue()">Search</button>
+
+    <script>
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const getSearchNumber = () => {
+        const elem = document.getElementById("searchNumber");
+        return elem.value;
+      };
+
+      const updateElementValue = () => {
+        updateArrayElementValue();
+        updateSearchElementValue();
+        updateResultElementValue();
+      };
+
+      const updateArrayElementValue = () => {
+        const elem = document.getElementById("array");
+        elem.innerText = `Array: [${getArray().join(", ")}]`;
+      };
+
+      const updateSearchElementValue = () => {
+        const elem = document.getElementById("search");
+        elem.innerText = `Search: ${getSearchNumber()}`;
+      };
+
+      const updateResultElementValue = () => {
+        const elem = document.getElementById("result");
+        elem.innerText = `Result: ${binarySearch()}`;
+      };
+
+      const binarySearch = () => {
+        const arr = getArray();
+        const searchNumber = getSearchNumber();
+        let left = 0;
+        let right = arr.length - 1;
+        while (left <= right) {
+          const midIndex = Math.floor((left + right) / 2);
+          if (arr[midIndex] == searchNumber) {
+            return midIndex;
+          }
+          if (arr[midIndex] > searchNumber) {
+            right = midIndex - 1;
+          } else {
+            left = midIndex + 1;
+          }
+        }
+        return "not found";
+      };
+    </script>
+  </body>
+</html>

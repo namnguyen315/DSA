@@ -1,0 +1,94 @@
+// linked list html js implement
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linked List</title>
+  </head>
+  <body>
+    <h1>Linked List</h1>
+    <p>Idea:</p>
+    <ol>
+      <li>
+        Mỗi node trong linked list chứa dữ liệu và một tham chiếu đến node tiếp
+        theo.
+      </li>
+      <li>
+        Node đầu tiên được gọi là head và node cuối cùng được gọi là tail.
+      </li>
+      <li>
+        Linked list có thể được sử dụng để lưu trữ các dữ liệu có kích thước
+        biến đổi.
+      </li>
+    </ol>
+    <p id="linkedList">Linked List: [ ]</p>
+
+    <input type="text" id="getNumber" />
+
+    <button onclick="updateElementValue()">Add</button>
+
+    <script>
+      class Node {
+        constructor(data) {
+          this.data = data;
+          this.next = null;
+        }
+      }
+
+      class LinkedList {
+        constructor() {
+          this.head = null;
+          this.tail = null;
+        }
+
+        add(data) {
+          const newNode = new Node(data);
+          if (this.head === null) {
+            this.head = newNode;
+            this.tail = newNode;
+          } else {
+            this.tail.next = newNode;
+            this.tail = newNode;
+          }
+        }
+
+        toString() {
+          let current = this.head;
+          let result = "[";
+          while (current !== null) {
+            result += current.data;
+            if (current.next !== null) {
+              result += ", ";
+            }
+            current = current.next;
+          }
+          result += "]";
+          return result;
+        }
+      }
+
+      const linkedList = new LinkedList();
+
+      const getArray = () => {
+        const elem = document.getElementById("getNumber");
+        const arrNum = elem.value.trim().split(" ");
+        return arrNum;
+      };
+
+      const updateElementValue = () => {
+        const arr = getArray();
+        arr.forEach((element) => {
+          linkedList.add(element);
+        });
+        updateLinkedListElementValue();
+      };
+
+      const updateLinkedListElementValue = () => {
+        const elem = document.getElementById("linkedList");
+        elem.innerText = `Linked List: ${linkedList.toString()}`;
+      };
+    </script>
+  </body>
+</html>
+
