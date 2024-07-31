@@ -93,4 +93,14 @@
 # Các thuật toán sắp xếp khác
 
 - **Shell Sort**: Thuật toán sắp xếp Shell Sort là một cải tiến của thuật toán Insertion Sort. Nó sắp xếp các phần tử cách nhau một khoảng nhất định, sau đó giảm dần khoảng cách cho đến khi khoảng cách bằng 1.
-- **Comb Sort**: Thuật toán Comb Sort là một cải tiến của thuật toán Bubble Sort. Nó sử dụng một khoảng cách
+- **Comb Sort**: Thuật toán Comb Sort là một cải tiến của thuật toán Bubble Sort. Nó sử dụng một khoảng cách lớn hơn để so sánh các phần tử, sau đó giảm dần khoảng cách cho đến khi khoảng cách bằng 1.
+- **Tim Sort**: Thuật toán Tim Sort là một thuật toán sắp xếp kết hợp giữa Insertion Sort và Merge Sort. Nó sử dụng Insertion Sort để sắp xếp các phần tử nhỏ và Merge Sort để sắp xếp các phần tử lớn.
+- **Tree Sort**: Thuật toán Tree Sort sắp xếp các phần tử bằng cách sử dụng một cây nhị phân. Nó chèn các phần tử vào cây nhị phân theo thứ tự, sau đó duyệt qua cây nhị phân theo thứ tự để lấy các phần tử đã được sắp xếp.
+
+# Lưu ý
+
+- Các thuật toán sắp xếp được sử dụng trong nhiều ứng dụng khác nhau, chẳng hạn như sắp xếp dữ liệu, tìm kiếm dữ liệu, và xử lý dữ liệu.
+- Việc lựa chọn thuật toán sắp xếp phù hợp phụ thuộc vào kích thước của mảng, loại dữ liệu, và các yêu cầu hiệu suất.
+- Các thuật toán sắp xếp có thể được tối ưu hóa để cải thiện hiệu suất.
+- Các thuật toán sắp xếp có thể được sử dụng để sắp xếp các loại dữ liệu khác nhau, chẳng hạn như số nguyên, số thực, chuỗi, và đối tượng.
+- Các thuật toán sắp xếp là một chủ đề quan trọng trong khoa học máy tính và được sử dụng rộng rãi trong nhiều ứng dụng.
