@@ -45,3 +45,52 @@
     - Tạo 1 mảng đầu ra có cùng kích thước với mảng đầu vào
     - Duyệt qua mảng đầu vào từ cuối lên đầu
     - cho mỗi phần tử, giảm giá trị tương ứng trong mảng đếm xuống 1 và đặt phần tử đó vào vị trí được chỉ định bởi giá trị trong mảng đếm
+
+# Quick Sort (sắp xếp nhanh)
+
+- Thuật toán quick sort lấy một mảng giá trị, chọn 1 trong các giá trị làm phần tử trục và di chuyển các giá trị khác sao cho các giá trị thấp hơn nằm phía ở bên trái của phần tử trục và các giá trị cao hơn phần tử trục nằm ở phía bên phải phần tử trục
+- time complexity (độ phức tạp thời gian):
+    - worst case : $O(n^2)$
+    - on average : $O(nlogn)$
+- cách thức hoạt động:
+    - Chọn một phần tử làm pivot (thường là phần tử cuối cùng của mảng).
+    - Phân hoạch mảng sao cho tất cả các phần tử nhỏ hơn pivot nằm ở bên trái
+    pivot và tất cả các phần tử lớn hơn pivot nằm ở bên phải pivot.
+    - Áp dụng thuật toán quick sort cho hai phần con bên trái và bên phải của
+    pivot.
+    - Lặp lại các bước trên cho đến khi tất cả các phần tử trong mảng được sắp
+    xếp.
+
+# Merge Sort (sắp xếp trộn)
+
+- Thuật toán merge sort chia mảng thành 2 phần con, sắp xếp 2 phần con và sau đó trộn 2 phần con đã sắp xếp lại với nhau
+- time complexity (độ phức tạp thời gian): $O(nlogn)$
+- cách thức hoạt động:
+    - Chia mảng thành 2 phần con cho đến khi mỗi phần con chỉ còn 1 phần tử
+    - Sắp xếp 2 phần con đã được chia
+    - Trộn 2 phần con đã được sắp xếp lại với nhau
+
+# Radix Sort (sắp xếp cơ số)
+
+- Thuật toán radix sort sắp xếp 1 mảng bằng cách sắp xếp các phần tử theo từng chữ số của chúng
+- time complexity (độ phức tạp thời gian): $O(nk)$
+- cách thức hoạt động:
+    - Duyệt qua mảng từ chữ số ít ý nghĩa nhất đến chữ số có ý nghĩa nhất
+    - Sắp xếp các phần tử theo từng chữ số bằng cách sử dụng 1 thuật toán sắp xếp ổn định (ví dụ như counting sort)
+    - Sau khi sắp xếp theo từng chữ số, mảng sẽ được sắp xếp theo thứ tự
+
+# Heap Sort (sắp xếp đống)
+
+- Thuật toán heap sort sắp xếp 1 mảng bằng cách sử dụng 1 cấu trúc dữ liệu gọi là đống (heap)
+- time complexity (độ phức tạp thời gian): $O(nlogn)$
+- cách thức hoạt động:
+    - Xây dựng 1 đống từ mảng đầu vào
+    - Lấy phần tử lớn nhất (hoặc nhỏ nhất) từ đống và hoán đổi nó với phần tử cuối cùng của mảng
+    - Loại bỏ phần tử cuối cùng khỏi đống và giảm kích thước của đống xuống 1
+    - Sắp xếp lại đống để đảm bảo tính chất của đống được giữ nguyên
+    - Lặp lại các bước trên cho đến khi đống rỗng
+
+# Các thuật toán sắp xếp khác
+
+- **Shell Sort**: Thuật toán sắp xếp Shell Sort là một cải tiến của thuật toán Insertion Sort. Nó sắp xếp các phần tử cách nhau một khoảng nhất định, sau đó giảm dần khoảng cách cho đến khi khoảng cách bằng 1.
+- **Comb Sort**: Thuật toán Comb Sort là một cải tiến của thuật toán Bubble Sort. Nó sử dụng một khoảng cách
