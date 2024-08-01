@@ -24,3 +24,16 @@
 
 - Ví dụ trên cho thấy cách lưu trữ một giá trị số nguyên trên bộ vi điều khiển Arduino Uno đơn giản nhưng phổ biến. Bộ vi điều khiển này có kiến trúc 8 bit với bus địa chỉ 16 bit và sử dụng hai byte cho số nguyên và hai byte cho địa chỉ bộ nhớ. Để so sánh, máy tính cá nhân và điện thoại thông minh sử dụng 32 hoặc 64 bit cho số nguyên và địa chỉ, nhưng về cơ bản bộ nhớ hoạt động theo cùng một cách.
 
+## **Arrays in Memory**
+
+- Các phần tử trong 1 mảng được lưu trữ liên tục trong bộ nhớ. Có nghĩa là Mỗi phần tử được lưu trữ ngay sau phần tử trước đó.
+
+- ảnh bên dưới cho ta thấy cách 1 mảng số nguyên myArray = [3,5,13,2] được lưu trữ.
+
+  ![img_arrays_memory](/Images/img_linkedlists_arraymemory.png)
+
+- Máy tính chỉ có địa chỉ của byte đầu tiên của myArray, vì vậy để truy cập phần tử thứ 3 bằng cách myArray[2], máy tính bắt đầu ở 0x7f28 và nhảy qua hai số nguyên đầu tiên. Máy tính biết rằng một số nguyên được lưu trữ 2 byte, vì vậy nó nhảy 2x2 byte về phía trước từ 0x7F28 và đọc giá trị 13 bắt đầu từ địa chỉ 0x7F32
+
+- Khi xóa hoặc chèn các phần tử vào 1 mảng, mọi phần tử theo sau phải được dịch chuyển lên để nhường chỗ cho phần tử mới hoặc dịch chuyển xuống để thế chỗ cho phần tử đã bị xóa. Các hoặt động dịch chuyển như vậy tốn nhiều thời gian và có thể gây ra sự cố trong cá hệ thống thời gian thực
+
+
