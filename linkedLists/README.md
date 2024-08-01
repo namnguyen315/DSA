@@ -46,5 +46,22 @@
 
 - Hình ảnh bên dưới cho thấy cách lưu trữ danh sách liên kết trong bộ nhớ. Danh sách liên kết có bốn nút có giá trị 3,5,13,2 và mỗi nút có 1 con trỏ tới nút tiếp theo trong danh sách.
 
-    ![img_linked_list_memoryu](/Images/img_linkedlists_memory2.png)
+  ![img_linked_list_memoryu](/Images/img_linkedlists_memory2.png)
 
+- Mỗi nút chiếm 4 byte. Hai byte được sử dụng để lưu trữ một giá trị nguyên và hai byte được sử dụng để lưu trữ địa chỉ cho nút tiếp theo danh sách. Như đã đề cập trước đó, cần bao nhiêu byte để lưu trữ số nguyên và địa chỉ tùy thuộc vào kiến trúc của máy tính. Ví dụ này, giống như ví dụ về mảng trước, phù hợp với kiến trúc vi điều khiển 8 bit đơn giản. Để dễ dàng xem các nút liên quan với nhau như thế nào, chúng ta sẽ hiển thị các nút trong danh sách liên kết theo cách đơn giản hơn, ít liên quan đến vị trí bộ nhớ của chúng, như trong hình bên dưới:
+
+  ![img_linkedlists_singlenode](/Images/img_linkedlists_singlenode.svg)
+
+- Nếu chúng ta đặt bốn nút giống nhau từ ví dụ trước lại với nhau bằng cách sử dụng hình ảnh trực quan mới này, nó sẽ trông như sau
+
+  ![img_linkedlists_exwithvalues](/Images/img_linkedlists_exwithvalues.svg)
+
+- Nút đầu tiên trong danh ách liên kết được là “Head”, và nút cuối cùng được gọi là “Tail”
+
+- Không giống như mảng, các nút trong danh sách liên kết không đặt ngay sau nhau trong bộ nhớ. điều đó có nghĩa là khi thêm hoặc xóa 1 nút, việc dịch chuyển các nút khác là không cần thiết, vì vậy đó là 1 điều tốt.
+
+- Một điều không tốt với danh sách liên kết là chúng ta không thể truy cập trực tiếp vào một nút như với một mảng chỉ bằng cách viết myArray[5] chẳng hạn. Để có được nút 5 trong 1 danh sách liên kết, chúng ta phải bắt đầu với nút đầu tiên gọi là “Head” sử dụng con trỏ của nút đó để đến nút tiếp theo và làm như vậy trong khi chúng ta đạt đến nút số 5.
+
+- Tìm hiểu về danh sách liên kết giúp chúng ta hiểu rõ hơn các khái niệm như cấp phát bộ nhớ và con trỏ.
+
+- Danh sách liên kết cũng rất quan trọng để hiểu trước khi tìm hiểu về các cấu trúc dữ liệu phức tạp hơn như cây và đồ thị, có thể được triển khai bằng danh sách liên kết.
