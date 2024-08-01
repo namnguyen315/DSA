@@ -36,4 +36,15 @@
 
 - Khi xóa hoặc chèn các phần tử vào 1 mảng, mọi phần tử theo sau phải được dịch chuyển lên để nhường chỗ cho phần tử mới hoặc dịch chuyển xuống để thế chỗ cho phần tử đã bị xóa. Các hoặt động dịch chuyển như vậy tốn nhiều thời gian và có thể gây ra sự cố trong cá hệ thống thời gian thực
 
+## **Linked lists in Memory**
+
+- Thay vì lưu trữ tập hợp dữ liệu dưới dạng mảng, chúng ta có thể tạo danh sách liên kết. Danh sách liên kết được sử dụng trong nhiều trường hợp, như lưu trữ dữ liệu động, triển khai ngăn xếp và hàng đợi hoặc biểu diễn biểu đồ, để đề cập đến một số trường hợp trong số đó.
+
+- 1 danh sách liên kết bao gồm các nút có một số loại dữ liệu và ít nhất một con trỏ hoặc liên kết với các nút khác.
+
+- Lợi ích của việc sử dụng danh sách liên kết là các nút được lưu trữ ở bất kì nơi nào có dung lượng trống trong bộ nhớ, các nút không cần phải được lưu trữ liền kề nhau giống như các phần tử được lưu trữ trong mảng. Một điều thú vị khác với danh sách liên kết là khi thêm hoặc xóa các nút, các nút còn lại trong danh sách không cần phải dịch chuyển.
+
+- Hình ảnh bên dưới cho thấy cách lưu trữ danh sách liên kết trong bộ nhớ. Danh sách liên kết có bốn nút có giá trị 3,5,13,2 và mỗi nút có 1 con trỏ tới nút tiếp theo trong danh sách.
+
+    ![img_linked_list_memoryu](/Images/img_linkedlists_memory2.png)
 
