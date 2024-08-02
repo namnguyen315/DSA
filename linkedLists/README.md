@@ -70,14 +70,14 @@
 
 - **Singly Linked List** (danh sách liên kết đơn) là loại danh sách liên kết đơn giản nhất. Nó chiếm ít không gian trong bộ nhớ vì mỗi nút chỉ có 1 địa chỉ cho nút tiếp theo, như trong hình bên dưới.
 
-  !![img_linkedlists_singly](/Images/img_linkedlists_singly.svg)
+  ![img_linkedlists_singly](/Images/img_linkedlists_singly.svg)
 
 - **Doubly Linked List** (danh sách liên kết đôi) có các nút có địa chỉ cho cả nút trước và nút tiếp theo, như trong hình bên dưới và do đó chiếm nhiều bộ nhớ hơn. Nhưng danh sách liên kết đôi là tốt nếu muốn có thể di chuyển cả lên và xuống trong danh sách.
 
-  !![Images/img_linkedlists_doubly](/Images/img_linkedlists_doubly.svg)
+  ![Images/img_linkedlists_doubly](/Images/img_linkedlists_doubly.svg)
 
 - **Circular Linked List** (danh sách liên kết vòng) giống như danh sách liên kết đơn hoặc đôi với nút đầu tiên ("Head") và nút cuối cùng ("Tail") được kết nối. Trong danh sách liên kết đơn hoặc đôi, chúng ta có thể tìm thấy điểm bắt đầu và kết thúc của danh sách chỉ bằng cách kiểm tra xem các liên kết có rỗng hay không. Danh sách liên kết vòng rất phù hợp cho những danh sách bạn cần duyệt qua liên tục
 
-  !![img_linkedlists_circsingly](/Images/img_linkedlists_circsingly.svg)
+  ![img_linkedlists_circsingly](/Images/img_linkedlists_circsingly.svg)
 
-  !![img_linkedlists_circdoubly](/Images/img_linkedlists_circdoubly.svg)
+  ![img_linkedlists_circdoubly](/Images/img_linkedlists_circdoubly.svg)
