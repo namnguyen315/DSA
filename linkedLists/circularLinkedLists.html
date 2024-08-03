@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doubly Linked List</title>
+    <title>Circular Linked List</title>
   </head>
   <body>
-    <h1>Doubly Linked List</h1>
+    <h1>Circular Linked List</h1>
     <p>Idea:</p>
     <ol>
       <li>
         Mỗi node trong linked list chứa dữ liệu và một tham chiếu đến node tiếp
-        theo và node trước đó.
+        theo.
       </li>
       <li>
-        Node đầu tiên được gọi là head và node cuối cùng được gọi là tail.
+        Node cuối cùng trỏ đến node đầu tiên.
       </li>
       <li>
         Linked list có thể được sử dụng để lưu trữ các dữ liệu có kích thước
@@ -32,44 +32,45 @@
         constructor(data) {
           this.data = data;
           this.next = null;
-          this.prev = null;
         }
       }
 
-      class DoublyLinkedList {
+      class CircularLinkedList {
         constructor() {
           this.head = null;
-          this.tail = null;
         }
 
         add(data) {
           const newNode = new Node(data);
           if (this.head === null) {
             this.head = newNode;
-            this.tail = newNode;
+            newNode.next = this.head;
           } else {
-            this.tail.next = newNode;
-            newNode.prev = this.tail;
-            this.tail = newNode;
+            let current = this.head;
+            while (current.next !== this.head) {
+              current = current.next;
+            }
+            current.next = newNode;
+            newNode.next = this.head;
           }
         }
 
         toString() {
           let current = this.head;
           let result = "[";
-          while (current !== null) {
+          while (current.next !== this.head) {
             result += current.data;
-            if (current.next !== null) {
+            if (current.next !== this.head) {
               result += ", ";
             }
             current = current.next;
           }
-          result += "]";
+          result += current.data + "]";
           return result;
         }
       }
 
-      const linkedList = new DoublyLinkedList();
+      const linkedList = new CircularLinkedList();
 
       const getArray = () => {
         const elem = document.getElementById("getNumber");
