@@ -28,7 +28,7 @@
     <button onclick="updateElementValue()">Add</button>
     <button onclick="insertValueAt()">InsertAt</button>
     <button onclick="deleteNode()">Delete</button>
-    <button>RemoveAt</button>
+    <button onclick="removeAt()">RemoveAt</button>
     <button>Find</button>
     <button>Clear</button>
     <button>Reverse</button>
@@ -90,7 +90,24 @@
           }
         }
 
-        removeAt() {}
+        removeAt(index) {
+          console.log(index);
+          let current = this.head;
+          let prev = null;
+          let count = 0;
+          if (index === 0) {
+            this.head = current.next;
+            return;
+          }
+          while (count <= index - 1) {
+            prev = current;
+            current = current.next;
+            count++;
+          }
+          prev.next = current.next;
+        }
+
+        get(index) {}
 
         find() {}
 
@@ -142,6 +159,12 @@
       const deleteNode = () => {
         const arr = getArray();
         linkedList.delete(Number(arr[0]));
+        updateLinkedListElementValue();
+      };
+
+      const removeAt = () => {
+        const arr = getArray();
+        linkedList.removeAt(Number(arr[0]));
         updateLinkedListElementValue();
       };
 
