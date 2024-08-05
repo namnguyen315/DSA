@@ -26,6 +26,13 @@
     <input type="text" id="getNumber" />
 
     <button onclick="updateElementValue()">Add</button>
+    <button onclick="insertValueAt()">InsertAt</button>
+    <button onclick="deleteNode()">Delete</button>
+    <button>RemoveAt</button>
+    <button>Find</button>
+    <button>Clear</button>
+    <button>Reverse</button>
+    <button>Sort</button>
 
     <script>
       class Node {
@@ -52,6 +59,47 @@
           }
         }
 
+        insertAt(data, index) {
+          const newNode = new Node(data);
+          let current = this.head;
+          let count = 0;
+          if (index === 0) {
+            newNode.next = current;
+            this.head = newNode;
+            return;
+          }
+          while (count < index - 1) {
+            current = current.next;
+            count++;
+          }
+          newNode.next = current.next;
+          current.next = newNode;
+        }
+
+        delete(data) {
+          let current = this.head;
+          let prev = null;
+          while (current.data != data) {
+            prev = current;
+            current = current.next;
+          }
+          if (prev === null) {
+            this.head = current.next;
+          } else {
+            prev.next = current.next;
+          }
+        }
+
+        removeAt() {}
+
+        find() {}
+
+        clear() {}
+
+        reverse() {}
+
+        sort() {}
+
         toString() {
           let current = this.head;
           let result = "[";
@@ -72,6 +120,7 @@
       const getArray = () => {
         const elem = document.getElementById("getNumber");
         const arrNum = elem.value.trim().split(" ");
+        console.log(arrNum);
         return arrNum;
       };
 
@@ -80,6 +129,19 @@
         arr.forEach((element) => {
           linkedList.add(element);
         });
+        updateLinkedListElementValue();
+      };
+
+      const insertValueAt = () => {
+        const arr = getArray();
+        console.log(arr);
+        linkedList.insertAt(Number(arr[0]), Number(arr[1]));
+        updateLinkedListElementValue();
+      };
+
+      const deleteNode = () => {
+        const arr = getArray();
+        linkedList.delete(Number(arr[0]));
         updateLinkedListElementValue();
       };
 

@@ -81,3 +81,35 @@
   ![img_linkedlists_circsingly](/Images/img_linkedlists_circsingly.svg)
 
   ![img_linkedlists_circdoubly](/Images/img_linkedlists_circdoubly.svg)
+
+# **Linked Lists Methods**
+
+## **Insert** (chèn)
+
+- **Insert at the beginning** (chèn vào đầu)
+
+- **Insert at the end** (chèn vào cuối)
+
+- **Insert at a specific position** (chèn vào vị trí cụ thể)
+
+## **Delete** (xóa)
+
+- **Delete at the beginning** (xóa ở đầu)
+
+- **Delete at the end** (xóa ở cuối)
+
+- **Delete at a specific position** (xóa ở vị trí cụ thể)
+
+- **Delete a specific value** (xóa giá trị cụ thể)
+
+## **Search** (tìm kiếm)
+
+- **Search for a specific value** (tìm kiếm giá trị cụ thể)
+
+- **Search for a specific position** (tìm kiếm vị trí cụ thể)
+
+## **Traverse** (duyệt)
+
+## **Reverse** (đảo ngược)
+
+## **Sort** (sắp xếp)
