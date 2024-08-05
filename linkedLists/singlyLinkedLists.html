@@ -22,6 +22,7 @@
       </li>
     </ol>
     <p id="linkedList">Linked List: [ ]</p>
+    <p id="output"></p>
 
     <input type="text" id="getNumber" />
 
@@ -29,7 +30,7 @@
     <button onclick="insertValueAt()">InsertAt</button>
     <button onclick="deleteNode()">Delete</button>
     <button onclick="removeAt()">RemoveAt</button>
-    <button>Find</button>
+    <button onclick="find()">Find</button>
     <button>Clear</button>
     <button>Reverse</button>
     <button>Sort</button>
@@ -46,6 +47,15 @@
         constructor() {
           this.head = null;
           this.tail = null;
+        }
+        length() {
+          let current = this.head;
+          let count = 0;
+          while (current !== null) {
+            count++;
+            current = current.next;
+          }
+          return count;
         }
 
         add(data) {
@@ -107,9 +117,19 @@
           prev.next = current.next;
         }
 
-        get(index) {}
+        find(data) {
+          let current = this.head;
+          let count = 0;
+          while (current.data != data && current.next != null) {
+            current = current.next;
+            count++;
+          }
 
-        find() {}
+          if (current.data !== data) {
+            return "not found";
+          }
+          return count;
+        }
 
         clear() {}
 
@@ -137,7 +157,6 @@
       const getArray = () => {
         const elem = document.getElementById("getNumber");
         const arrNum = elem.value.trim().split(" ");
-        console.log(arrNum);
         return arrNum;
       };
 
@@ -151,7 +170,6 @@
 
       const insertValueAt = () => {
         const arr = getArray();
-        console.log(arr);
         linkedList.insertAt(Number(arr[0]), Number(arr[1]));
         updateLinkedListElementValue();
       };
@@ -168,9 +186,18 @@
         updateLinkedListElementValue();
       };
 
+      const find = () => {
+        const arr = getArray();
+        updateOutputElementValue(linkedList.find(Number(arr[0])));
+      };
+
       const updateLinkedListElementValue = () => {
         const elem = document.getElementById("linkedList");
         elem.innerText = `Linked List: ${linkedList.toString()}`;
+      };
+      const updateOutputElementValue = (output) => {
+        const elem = document.getElementById("output");
+        elem.innerText = `Output: ${output}`;
       };
     </script>
   </body>
