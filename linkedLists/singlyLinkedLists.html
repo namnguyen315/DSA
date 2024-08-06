@@ -32,7 +32,7 @@
     <button onclick="removeAt()">RemoveAt</button>
     <button onclick="find()">Find</button>
     <button onclick="clearLinkedlist()">Clear</button>
-    <button>Reverse</button>
+    <button onclick="reverse()">Reverse</button>
     <button>Sort</button>
 
     <script>
@@ -136,7 +136,18 @@
           this.tail = null;
         }
 
-        reverse() {}
+        reverse() {
+          let current = this.head;
+          let prev = null;
+          let next = null;
+          while (current !== null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+          }
+          this.head = prev;
+        }
 
         sort() {}
 
@@ -196,6 +207,11 @@
 
       const clearLinkedlist = () => {
         linkedList.clear();
+        updateLinkedListElementValue();
+      };
+
+      const reverse = () => {
+        linkedList.reverse();
         updateLinkedListElementValue();
       };
 
