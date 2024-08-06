@@ -33,7 +33,7 @@
     <button onclick="find()">Find</button>
     <button onclick="clearLinkedlist()">Clear</button>
     <button onclick="reverse()">Reverse</button>
-    <button>Sort</button>
+    <button onclick="sort()">Sort</button>
 
     <script>
       class Node {
@@ -149,7 +149,23 @@
           this.head = prev;
         }
 
-        sort() {}
+        sort() {
+          let current = this.head;
+          let next = null;
+          let temp = null;
+          while (current !== null) {
+            next = current.next;
+            while (next !== null) {
+              if (Number(current.data) > Number(next.data)) {
+                temp = current.data;
+                current.data = next.data;
+                next.data = temp;
+              }
+              next = next.next;
+            }
+            current = current.next;
+          }
+        }
 
         toString() {
           let current = this.head;
@@ -212,6 +228,11 @@
 
       const reverse = () => {
         linkedList.reverse();
+        updateLinkedListElementValue();
+      };
+
+      const sort = () => {
+        linkedList.sort();
         updateLinkedListElementValue();
       };
 
