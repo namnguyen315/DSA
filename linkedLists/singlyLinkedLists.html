@@ -31,7 +31,7 @@
     <button onclick="deleteNode()">Delete</button>
     <button onclick="removeAt()">RemoveAt</button>
     <button onclick="find()">Find</button>
-    <button>Clear</button>
+    <button onclick="clearLinkedlist()">Clear</button>
     <button>Reverse</button>
     <button>Sort</button>
 
@@ -131,7 +131,10 @@
           return count;
         }
 
-        clear() {}
+        clear() {
+          this.head = null;
+          this.tail = null;
+        }
 
         reverse() {}
 
@@ -189,6 +192,11 @@
       const find = () => {
         const arr = getArray();
         updateOutputElementValue(linkedList.find(Number(arr[0])));
+      };
+
+      const clearLinkedlist = () => {
+        linkedList.clear();
+        updateLinkedListElementValue();
       };
 
       const updateLinkedListElementValue = () => {
