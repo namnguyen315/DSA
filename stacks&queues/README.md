@@ -74,16 +74,30 @@
 
 ### **Triển khai Queue bằng Array**
 
-- Lý do triển khai Queue bằng Array
+- **Lý do triển khai Queue bằng Array**
 
   - Bộ nhớ hiệu quả: Các phần tử mảng không giữ địa chỉ của phần tiếp theo giống như các nút trong Linked List
 
   - Dễ triển khai và dễ hiểu hơn: Việc sử dụng mảng để triển khai Stack yêu cầu ít mã hơn so với sử dụng Linked List do đó việc sử dụng Array dễ hiểu hơn
 
-- Lý do không dùng Array để triển khai Queue
+- **Lý do không dùng Array để triển khai Queue**
 
   - Kích thước cố định: Một mảng chiếm một phần cố định của bộ nhớ. Điều này có nghĩa là nó có thể chiếm nhiều bộ nhớ hơn mức cần thiết hoặc nếu mảng đầy, nó không thể chứa nhiều phần tử hơn. Và việc thay đổi kích thước một mảng có thể tốn kém.
 
   - Chi phí dịch chuyển: Dequeue làm cho phần tử đầu tiên trong hàng đợi bị xóa và các phần tử khác phải được dịch chuyển để thế chỗ các phần tử đã bị xóa. Điều này không hiệu quả và có thể gây ra vấn đề, đặc biệt nếu hàng đợi dài.
 
   - Các lựa chọn thay thế: Một số ngôn ngữ lập trình có cấu trúc dữ liệu tích hợp được tối ưu hóa cho các hoạt động xếp hàng tốt hơn so với việc sử dụng mảng.
+
+## **Triển khai Queue bằng LinkedList**
+
+- **Lý do triển khai Queue bằng LinkedList**
+
+  - Kích thước động: Hàng đợi có thể tăng và giảm linh hoạt, không giống như mảng.
+
+  - Không dịch chuyển: Phần tử phía trước của hàng đợi có thể bị xóa (enqueue) mà không cần phải dịch chuyển các phần tử khác trong bộ nhớ.
+
+- **Lý do không dùng LinkedList để triển khai Queue**
+
+  - Bộ nhớ bổ sung: Mỗi phần tử hàng đợi phải chứa địa chỉ của phần tử tiếp theo (nút danh sách liên kết tiếp theo).
+
+  - Khả năng đọc: Mã có thể khó đọc và viết hơn đối với một số người vì nó dài hơn và phức tạp hơn.
