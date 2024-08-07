@@ -38,4 +38,14 @@
 
   - Kích thước cố định: Một mảng chiếm một phần cố định của bộ nhớ. Điều này có nghĩa là nó có thể chiếm nhiều bộ nhớ hơn mức cần thiết nếu dùng mảng, hoặc nếu mảng đầy nó không thể chứa nhiều phần tử hơn
 
+## ** Triển khai Stack bằng Linked List**
 
+- Lý do triển khai Stack bằng LinkedList
+
+  - Kích thước động: Stack có thể được mở rộng hoặc thu nhỏ một cách link hoạt không giống như khi sử dụng Array
+
+- Lý do không dùng Linked List để triển khai Stack
+
+  - Tốn bộ nhớ: Mỗi element trong Stack phải chứa địa chỉ của phần tử tiếp theo (node tiếp theo trong Linked List)
+
+  - Khả năng đọc: code khó đọc và khó viết hơn đối với 1 số người vì nó dài hơn và phức tạp hơn
