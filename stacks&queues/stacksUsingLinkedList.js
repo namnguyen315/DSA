@@ -43,6 +43,22 @@ class StackUsingLinkedList {
     }
   }
 
+  peek() {
+    if (this.head == null) {
+      console.log("Stack is empty");
+    } else console.log(this.tail.data);
+  }
+
+  size() {
+    console.log(this.length);
+  }
+
+  isEmpty() {
+    if (this.head == null) {
+      console.log(true);
+    } else console.log(false);
+  }
+
   print() {
     let stack = "[";
     let current = this.head;
@@ -65,8 +81,13 @@ stack.push(10);
 stack.push(20);
 stack.push(20);
 stack.push(5);
+
 stack.pop();
 
-stack.test();
+stack.peek();
+
+stack.size();
+
+stack.isEmpty();
 
 stack.print();
