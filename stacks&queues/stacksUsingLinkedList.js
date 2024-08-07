@@ -26,6 +26,21 @@ class StackUsingLinkedList {
   }
 
   pop() {
+    if (this.head == null) {
+      return "Stack is empty";
+    } else if (this.head === this.tail) {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+    } else {
+      let current = this.head;
+      while (current.next !== this.tail) {
+        current = current.next;
+      }
+      current.next = null;
+      this.tail = current;
+      this.length--;
+    }
   }
 
   print() {
@@ -48,7 +63,10 @@ const stack = new StackUsingLinkedList();
 
 stack.push(10);
 stack.push(20);
+stack.push(20);
 stack.push(5);
 stack.pop();
+
+stack.test();
 
 stack.print();
